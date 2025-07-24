@@ -89,7 +89,14 @@ export function HashMap(loadFactor = 0.75, capacity = 16) {
     return hashKeys;
   };
 
-  const values = () => {};
+  const values = () => {
+    const hashValues = [];
+
+    for(let i = 0; i < buckets.length; i++) {
+      
+    }
+    return hashValues;
+  };
 
   const entries = () => {};
 
