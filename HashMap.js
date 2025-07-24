@@ -69,14 +69,25 @@ export function HashMap(loadFactor = 0.75, capacity = 16) {
   };
 
   const clear = () => {
-    // for (let i = 0; i < buckets.length; i++ ){
-    //   buckets[i][0] = null;
-    //   buckets[i][1] = null;
-    // }
-    // size = 0;
+    for(let i = 0; i < buckets.length; i++) {
+      if(buckets[i][0] !== undefined) {
+        buckets[i][0] === null;
+        buckets[i][1] === null;
+        size--;
+      }
+    }
   };
 
-  const keys = () => {};
+  const keys = () => {
+    const hashKeys = [];
+
+    for (let i = 0; i < buckets.length; i++) {
+      if(buckets[i][0] !== undefined) {
+        hashKeys.push(buckets[i][0]);
+      }
+    }
+    return hashKeys;
+  };
 
   const values = () => {};
 
