@@ -40,35 +40,27 @@ export function HashMap(loadFactor = 0.75, capacity = 16) {
   const has = (key) => {
     const index = hash(key);
     const bucket = buckets[index];
-    if (index < 0 || index >= size) {
-      for (let i = 0; i < bucket.length; i++) {
-        if (bucket[i][0] === key) {
-          return true;
-        } else {
-          return false;
-        }
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === key) {
+        return true;
+      } else {
+        return false;
       }
-      console.log("Trying to access index out of bounds");
-      return null;
     }
   };
 
   const remove = (key) => {
     const index = hash(key);
     const bucket = buckets[index];
-    if (index < 0 || index >= size) {
-      for(let i = 0; i < bucket.length; i++) {
-        if (bucket[i][0] === key) {
-          bucket[i][0] = null;
-          bucket[i][1] = null;
-          size--;
-          return true;
-        } else {
-          return false;
-        }
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === key) {
+        bucket[i][0] = null;
+        bucket[i][1] = null;
+        size--;
+        return true;
+      } else {
+        return false;
       }
-      console.log("Trying to access index out of bounds");
-      return null;
     }
   };
 
@@ -76,7 +68,13 @@ export function HashMap(loadFactor = 0.75, capacity = 16) {
     return size;
   };
 
-  const clear = () => {};
+  const clear = () => {
+    // for (let i = 0; i < buckets.length; i++ ){
+    //   buckets[i][0] = null;
+    //   buckets[i][1] = null;
+    // }
+    // size = 0;
+  };
 
   const keys = () => {};
 
