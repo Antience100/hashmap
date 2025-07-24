@@ -53,9 +53,28 @@ export function HashMap(loadFactor = 0.75, capacity = 16) {
     }
   };
 
-  const remove = (key) => {};
+  const remove = (key) => {
+    const index = hash(key);
+    const bucket = buckets[index];
+    if (index < 0 || index >= size) {
+      for(let i = 0; i < bucket.length; i++) {
+        if (bucket[i][0] === key) {
+          bucket[i][0] = null;
+          bucket[i][1] = null;
+          size--;
+          return true;
+        } else {
+          return false;
+        }
+      }
+      console.log("Trying to access index out of bounds");
+      return null;
+    }
+  };
 
-  const length = () => {};
+  const length = () => {
+    return size;
+  };
 
   const clear = () => {};
 
